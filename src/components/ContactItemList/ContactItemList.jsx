@@ -10,7 +10,7 @@ export const ContactItemList = () => {
     const filter = useSelector(contactsSelectors.getFilter);
     const contacts = useSelector(contactsSelectors.getContacts);
     // const dispatch = useDispatch();
-    console.log(contacts)
+    // console.log(contacts)
 
     // useEffect(() => {
     //     dispatch(fetchContacts());
@@ -25,6 +25,7 @@ export const ContactItemList = () => {
             const normalName = name.toLocaleLowerCase().includes(normalFilter);
             return normalName;
         })
+        // console.log('фильтр activated')
         return filteredContacts;
     }
 

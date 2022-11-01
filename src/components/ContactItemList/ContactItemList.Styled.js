@@ -7,7 +7,7 @@ export const ContactList = styled.ul`
   & li {
     display: flex;
     align-items: center;
-    max-width: 420px;
+    max-width: 500px;
     padding-left: 10px;
 
     &:focus,
@@ -22,7 +22,7 @@ export const ContactList = styled.ul`
     }
 
     & p {
-      width: 300px;
+      width: 450px;
       font-size: 1.2em;
       margin: 10px;
     }
