@@ -9,8 +9,8 @@ export const Filter = () => {
     const dispatch = useDispatch();
     const filter = useSelector(getFilter);
 
-    const onChange = (e) => {
-        dispatch(setFilter(e.target.value));
+    const onChange = (event) => {
+        dispatch(setFilter(event.target.value));
     }
     
     const filterId = nanoid();
@@ -18,7 +18,7 @@ export const Filter = () => {
     return (
         <FilterStyled>
             <label htmlFor='filterId'>Find contacts by name</label>
-            <input id={filterId} type="text" name="filter" value={filter}  onChange={onChange} placeholder="input something"/>
+            <input id={filterId} type="text" name="filter" value={filter}  onChange={onChange} placeholder="input something to search"/>
         </FilterStyled>
     )
 }

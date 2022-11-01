@@ -2,20 +2,20 @@ import ContactAddForm from "../ContactAddForm/ContactAddForm";
 import { ContactItemList } from "../ContactItemList/ContactItemList";
 import { Filter } from "../Filter/Filter";
 import { PhonebookStyled } from "./Phonebook.Styled";
-// import { fetchContacts } from "redux/contactsOperations";
-import { useDispatch,useSelector  } from "react-redux";
-// import { useEffect } from "react";
-import { getError, getIsLoading } from "../../redux/selectors";
+import { fetchContacts } from "redux/contactsOperations";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import * as contactsSelectors from "../../redux/selectors";
 import { BiRun } from 'react-icons/bi';
 
 export default function Phonebook() {
-    // const dispatch = useDispatch();
-    const isLoading = useSelector(getIsLoading);
-    const error = useSelector(getError);
+    const dispatch = useDispatch();
+    const isLoading = useSelector(contactsSelectors.getIsLoading);
+    const error = useSelector(contactsSelectors.getError);
     
-    // useEffect(() => {
-    //     dispatch(fetchContacts());
-    // }, [dispatch]);
+    useEffect(() => {
+        dispatch(fetchContacts());
+    }, [dispatch]);
 
 
     return <PhonebookStyled>

@@ -16,7 +16,6 @@ const contactsSlice = createSlice({
       state.isLoading = false;
       state.error = null;
       state.items = payload;
-      console.log('fulfiled here but nothing');
     },
     [fetchContacts.rejected](state, { payload }) {
       state.isLoading = false;
