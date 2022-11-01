@@ -1,6 +1,5 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
-// import PropTypes from "prop-types";
 import { FilterStyled } from "./Filter.Styled";
 import { useSelector, useDispatch } from 'react-redux';
 import { setFilter } from '../../redux/filterSlice';
@@ -23,8 +22,3 @@ export const Filter = () => {
         </FilterStyled>
     )
 }
-
-// Filter.propTypes = {
-//     onChange: PropTypes.func.isRequired,
-//     value: PropTypes.string.isRequired,
-// }

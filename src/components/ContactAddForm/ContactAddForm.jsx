@@ -1,15 +1,14 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
-// import PropTypes from "prop-types";
 import { ContactForm } from "./ContactAddForm.Styled";
-import { useSelector, useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contactsSlice';
+import {useSelector, useDispatch } from 'react-redux';
 import { getContacts } from '../../redux/selectors';
+import { addContact } from 'redux/contactsOperations';
 
 export default function ContactAddForm() {
 
     const [name, setName] = useState('');
-    const [number, setNumber] = useState('');
+    const [phone, setPhone] = useState('');
 
     const nameId = nanoid();
     const numberId = nanoid();
@@ -24,32 +23,34 @@ export default function ContactAddForm() {
             case 'name':
                 setName(value);
                 break;
-            case 'number':
-                setNumber(value);
+            case 'phone':
+                setPhone(value);
                 break;
             default:
                 setName('');
-                setNumber('');
+                setPhone('');
         };
     };
 
-    const inContacts = ({ name, number }) => {
-        return contacts.find((item) => item.name.toLocaleLowerCase() === name.toLocaleLowerCase() || item.number === number);
+    const inContacts = ({ name, phone }) => {
+        return contacts.find((item) => item.name.toLocaleLowerCase() === name.toLocaleLowerCase() || item.phone === phone);
     };
 
-    const addNewContact = ({ name, number }) => {
-        if (inContacts({ name, number })) {
+    const addNewContact = ({name, phone }) => {
+        if (inContacts({ name, phone })) {
             return alert(`${name} is already in contacts`);
         };
-        dispatch(addContact({ name, number }))
-    }; 
+        dispatch(addContact({name, phone }))
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addNewContact({ name, number });
+        addNewContact({ name, phone });
         setName('');
-        setNumber('');
+        setPhone('');
+        
     };
+
 
 
     return (
@@ -70,17 +71,17 @@ export default function ContactAddForm() {
                     required
                 />
                 <label htmlFor='{numberId}'>
-                    Number
+                    Phone Number
                 </label>
                 <input
                     id={numberId}
                     type="tel"
-                    name="number"
-                    value={number}
+                    name="phone"
+                    value={phone}
                     onChange={handleChange}
                     pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                     title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-                    placeholder="Enter New Number"
+                    placeholder="Enter New Phone Number"
                     required
                 />
                 <button type="submit">Add contact</button>
@@ -88,7 +89,3 @@ export default function ContactAddForm() {
         </>
     )
 };
-
-// ContactAddForm.propTypes = {
-//     onSubmit: PropTypes.func.isRequired,
-// }
