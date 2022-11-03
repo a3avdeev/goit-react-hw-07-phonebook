@@ -38,16 +38,19 @@ export default function ContactAddForm() {
 
     const addNewContact = ({name, phone }) => {
         if (inContacts({ name, phone })) {
+   
             return alert(`${name} is already in contacts`);
         };
-        dispatch(addContact({name, phone }))
+        dispatch(addContact({ name, phone }));
+        setName('');
+        setPhone('');
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         addNewContact({ name, phone });
-        setName('');
-        setPhone('');
+        // setName('');
+        // setPhone('');
         
     };
 
